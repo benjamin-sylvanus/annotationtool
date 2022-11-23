@@ -17,8 +17,6 @@ Mat image;
 Mat image_temp;
 vector<Point> top;
 vector<Point> bottom;
-
-time_t t  = time(nullptr);
 clock_t time_req;
 
 // function which will be called on mouse input
