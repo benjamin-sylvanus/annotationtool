@@ -3,6 +3,17 @@
 #include <ctime>
 #include <vector>
 #include <iostream>
+#include <QApplication>
+#include <QPushButton>
+#include <QCheckBox>
+#include <QWindow>
+#include <QImage>
+#include <QLabel>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+
+
+
 
 //Using namespace to nullify use of cv::function(); syntax
 using namespace cv;
@@ -76,7 +87,7 @@ void drawRectangle(int action, int x, int y, int flags, void *userdata)
 }
 
 // Main function
-int main()
+int main(int argc, char *argv[])
 {
     image = imread("/Users/benjaminsylvanus/CLionProjects/SampleProject/calcApp/lena.png");
     // Make a temporary image, which will be used to clear the image
@@ -104,5 +115,31 @@ int main()
     cout<<top<<endl;
     cout<<bottom<<endl;
     destroyAllWindows();
+
+    QApplication app (argc, argv);
+    QWidget *window = new QWidget;
+    QPushButton *button1 = new QPushButton("One");
+    QPushButton *button2 = new QPushButton("Two");
+    QPushButton *button3 = new QPushButton("Three");
+    QPushButton *button4 = new QPushButton("Four");
+    QPushButton *button5 = new QPushButton("Five");
+    QPushButton *button6 = new QPushButton("Six");
+    QVBoxLayout *vert = new QVBoxLayout(window);
+    QHBoxLayout *layout1 = new QHBoxLayout();
+    QHBoxLayout *layout2 = new QHBoxLayout();
+    QHBoxLayout *layout3 = new QHBoxLayout();
+    vert->addLayout(layout1);
+    vert->addLayout(layout2);
+    vert->addLayout(layout3);
+    layout1->addWidget(button1);
+    layout1->addWidget(button2);
+    layout2->addWidget(button3);
+    layout2->addWidget(button4);
+    layout3->addWidget(button5);
+    layout3->addWidget(button6);
+
+    window->show();
+    return QApplication::exec();
+
     return 0;
 }
